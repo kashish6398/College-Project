@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const USD_TO_INR = 83;
     // DOM Elements
     const productsGrid = document.getElementById('products-grid');
     const loader = document.getElementById('loader');
@@ -137,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div class="price-container">
-                    <span class="discounted-price">$${product.price.toFixed(2)}</span>
+                    <span class="discounted-price">₹${(product.price * USD_TO_INR).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
 
                 <button class="btn-card-details" data-id="${product.id}">

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const USD_TO_INR = 83;
     // DOM Elements
     const loader = document.getElementById('loader');
     const errorMessage = document.getElementById('error-message');
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ratingValue.textContent = `${productDetails.rating?.toFixed(1) || '0.0'} Out of 5`;
 
         // Price mapping (direct product price)
-        productPrice.textContent = `$${productDetails.price.toFixed(2)}`;
+        productPrice.textContent = `₹${(productDetails.price * USD_TO_INR).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
         // Description
         productDescription.textContent = productDetails.description || 'No description available for this item.';

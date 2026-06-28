@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const USD_TO_INR = 83;
     // DOM Elements
     const invoiceDateEl = document.getElementById('invoice-date');
     const billProductImg = document.getElementById('bill-product-img');
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         billProductCat.textContent = selectedProduct.category;
 
         // Financial Calculation formulas:
-        const originalPrice = selectedProduct.price || 0;
+        const originalPrice = (selectedProduct.price || 0) * USD_TO_INR;
         const discountPct = selectedProduct.discountPercentage || 0;
         
         // 1. Discount calculations
@@ -75,20 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. GST calculations (18% on the subtotal)
         const gstAmt = subtotal * 0.18;
 
-        // 3. Shipping Charge ($40.00 flat rate)
-        const shippingCharge = 40.00;
+        // 3. Shipping Charge ($40.00 converted to INR)
+        const shippingCharge = 40.00 * USD_TO_INR;
 
         // 4. Grand Total calculation: Subtotal + GST + Shipping
         const grandTotal = subtotal + gstAmt + shippingCharge;
 
         // Update calculations inside invoice table
-        calcBasePrice.textContent = `$${originalPrice.toFixed(2)}`;
+        calcBasePrice.textContent = `₹${originalPrice.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
         calcDiscountPct.textContent = `${discountPct.toFixed(1)}%`;
-        calcDiscountAmt.textContent = `-$${discountAmt.toFixed(2)}`;
-        calcSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-        calcGst.textContent = `$${gstAmt.toFixed(2)}`;
-        calcShipping.textContent = `$${shippingCharge.toFixed(2)}`;
-        calcGrandTotal.textContent = `$${grandTotal.toFixed(2)}`;
+        calcDiscountAmt.textContent = `-₹${discountAmt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        calcSubtotal.textContent = `₹${subtotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        calcGst.textContent = `₹${gstAmt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        calcShipping.textContent = `₹${shippingCharge.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        calcGrandTotal.textContent = `₹${grandTotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     }
 
     // Set up listeners for Checkout invoice flow
