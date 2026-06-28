@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Product Store</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/product.css">
+</head>
+<body>
+    <!-- Sticky Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bag-shopping nav-icon"></i>
+                <span>Product<span class="logo-accent">Store</span></span>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="nav-back-link">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Back to Catalog</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="details-container">
+        <!-- Loader -->
+        <div id="loader" class="loader-container">
+            <div class="spinner"></div>
+            <p>Loading product details...</p>
+        </div>
+
+        <!-- Error Panel -->
+        <div id="error-message" class="error-container hidden">
+            <i class="fa-solid fa-circle-exclamation error-icon"></i>
+            <h3>Product Not Found</h3>
+            <p>We couldn't retrieve the details for the requested product. It might have been removed or doesn't exist.</p>
+            <a href="index.html" class="btn-primary">
+                <i class="fa-solid fa-house"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+
+        <!-- Product Details Wrapper (Initially Hidden) -->
+        <div id="product-details-wrapper" class="details-wrapper hidden">
+            <!-- Left Column: Image -->
+            <section class="gallery-column">
+                <div class="main-image-container">
+                    <img id="main-product-img" src="" alt="Product Image">
+                </div>
+            </section>
+
+            <!-- Right Column: Specs & Checkout -->
+            <section class="info-column">
+                <div class="info-header">
+                    <span id="product-category" class="product-category-tag"></span>
+                    <h1 id="product-title" class="product-title"></h1>
+                    
+                    <div class="rating-container">
+                        <div id="rating-stars" class="stars"></div>
+                        <span id="rating-value" class="rating-val"></span>
+                    </div>
+                </div>
+
+                <!-- Price Card -->
+                <div class="price-card">
+                    <div class="price-row">
+                        <span id="product-price" class="price-large"></span>
+                    </div>
+                    <p class="tax-info">Inclusive of all local sales tax & calculations.</p>
+                </div>
+
+                <!-- Description -->
+                <div class="description-section">
+                    <h3>Description</h3>
+                    <p id="product-description"></p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="actions-section">
+                    <button id="btn-back" class="btn-secondary">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Back to Home</span>
+                    </button>
+                    <button id="btn-buy" class="btn-buy-now">
+                        <i class="fa-solid fa-credit-card"></i>
+                        <span>Proceed to Bill</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Product<span class="logo-accent">Store</span></span>
+                </a>
+            </div>
+            <p class="footer-bottom-text">&copy; 2026 ProductStore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/product.js"></script>
+</body>
+</html>

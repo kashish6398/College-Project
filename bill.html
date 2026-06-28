@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Invoice Summary - Product Store</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/bill.css">
+</head>
+<body>
+    <!-- Sticky Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bag-shopping nav-icon"></i>
+                <span>Product<span class="logo-accent">Store</span></span>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="nav-back-link">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Back to Home</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="bill-container">
+        <div class="bill-card">
+            <div class="bill-header">
+                <div class="invoice-branding">
+                    <h2>Invoice Summary</h2>
+                    <p class="invoice-date" id="invoice-date"></p>
+                </div>
+                <div class="invoice-logo">
+                    <i class="fa-solid fa-receipt"></i>
+                </div>
+            </div>
+
+            <!-- Product Purchased Summary -->
+            <section class="item-summary-section">
+                <h3>Product Details</h3>
+                <div class="item-details-row">
+                    <div class="item-image-wrapper">
+                        <img id="bill-product-img" src="" alt="Purchased Product Image">
+                    </div>
+                    <div class="item-meta">
+                        <h4 id="bill-product-name">Product Name Loading...</h4>
+                        <p id="bill-product-brand" class="brand-text">Brand Loading...</p>
+                        <span id="bill-product-cat" class="category-badge">Category</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Price Breakdown Calculation Table -->
+            <section class="calculation-section">
+                <h3>Billing Information</h3>
+                <div class="calc-table">
+                    <!-- Base Price (Original) -->
+                    <div class="calc-row">
+                        <span class="calc-label">Product Price</span>
+                        <span id="calc-base-price" class="calc-value"></span>
+                    </div>
+                    <!-- Discount Amount -->
+                    <div class="calc-row discount-row text-discount">
+                        <span class="calc-label">Discount Amount (<span id="calc-discount-pct"></span>)</span>
+                        <span id="calc-discount-amt" class="calc-value"></span>
+                    </div>
+                    <div class="divider"></div>
+                    <!-- Subtotal after Discount -->
+                    <div class="calc-row font-semibold">
+                        <span class="calc-label">Subtotal</span>
+                        <span id="calc-subtotal" class="calc-value"></span>
+                    </div>
+                    <!-- GST Calculation (18%) -->
+                    <div class="calc-row">
+                        <span class="calc-label">GST (18%)</span>
+                        <span id="calc-gst" class="calc-value"></span>
+                    </div>
+                    <!-- Shipping Charge ($40) -->
+                    <div class="calc-row">
+                        <span class="calc-label">Shipping Charge</span>
+                        <span id="calc-shipping" class="calc-value">$40.00</span>
+                    </div>
+                    <div class="double-divider"></div>
+                    <!-- Grand Total -->
+                    <div class="calc-row total-row">
+                        <span class="calc-label">Grand Total</span>
+                        <span id="calc-grand-total" class="calc-value"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer Action Controls -->
+            <div class="bill-actions">
+                <button id="btn-bill-back" class="btn-back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Back</span>
+                </button>
+                <button id="btn-place-order" class="btn-checkout">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Place Order</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Checkout Success Overlay Popup Modal -->
+    <div id="success-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="success-icon-wrapper">
+                <div class="success-circle">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            </div>
+            <h2>Order Placed!</h2>
+            <p class="modal-highlight">Your order has been placed successfully.</p>
+            <p class="modal-subtext">Thank you for purchasing from Product Store. Your reference invoice has been completed. Returning to the main catalog.</p>
+            <button id="btn-success-dismiss" class="btn-modal-dismiss">
+                <span>Continue Shopping</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Product<span class="logo-accent">Store</span></span>
+                </a>
+            </div>
+            <p class="footer-bottom-text">&copy; 2026 ProductStore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/bill.js"></script>
+</body>
+</html>

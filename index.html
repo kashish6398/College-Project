@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Store - Discover Premium Products</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Sticky Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bag-shopping nav-icon animate-logo"></i>
+                <span>Product<span class="logo-accent">Store</span></span>
+            </a>
+            
+            <div class="nav-search-container">
+                <div class="search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search products by title...">
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <div class="filter-wrapper">
+                    <i class="fa-solid fa-filter filter-icon"></i>
+                    <select id="category-filter">
+                        <option value="">All Categories</option>
+                        <!-- Dynamic options will be inserted here -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Summer Collection 2026</span>
+            <h1 class="hero-title">Step Into Premium Shopping</h1>
+            <p class="hero-subtitle">Explore selected electronics, fashion, and lifestyle items curated just for you. Seamless payments and global delivery.</p>
+            <div class="hero-buttons">
+                <a href="#shop-section" class="btn-primary hero-btn">
+                    <span>Explore Products</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Shop Section -->
+    <main id="shop-section" class="shop-container">
+        <div class="section-header">
+            <h2 class="section-title">Featured Products</h2>
+            <p class="section-description">Showing top rated items from DummyJSON Catalog</p>
+        </div>
+
+        <!-- Spinner & Message Displays -->
+        <div id="loader" class="loader-container">
+            <div class="spinner"></div>
+            <p>Fetching amazing products...</p>
+        </div>
+
+        <div id="error-message" class="error-container hidden">
+            <i class="fa-solid fa-circle-exclamation error-icon"></i>
+            <h3>Oops! Connection Failed</h3>
+            <p>We couldn't retrieve products. Please check your internet connection and try again.</p>
+            <button id="retry-btn" class="btn-retry">Retry Fetching</button>
+        </div>
+
+        <div id="empty-state" class="empty-container hidden">
+            <i class="fa-solid fa-box-open empty-icon"></i>
+            <h3>No products found</h3>
+            <p>Try refining your search keyword or selecting a different category filter.</p>
+        </div>
+
+        <!-- Products Grid -->
+        <section id="products-grid" class="products-grid">
+            <!-- Dynamic product cards will be rendered here -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Product<span class="logo-accent">Store</span></span>
+                </a>
+                <p class="footer-description">A premium responsive e-commerce showcase application powered by DummyJSON. Built with clean HTML, CSS, and ES6 JS.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#shop-section">Shop Collection</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ProductStore. All rights reserved. Designed for excellence.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,546 @@
+/* ==========================================================================
+   DESIGN SYSTEM & VARIABLES
+   ========================================================================== */
+:root {
+    --bg-primary: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --primary-light: #e0e7ff;
+    --accent: #8b5cf6;
+    --accent-light: #f5f3ff;
+    --border-color: #e2e8f0;
+    --success: #10b981;
+    --success-light: #ecfdf5;
+    --font-family: 'Plus Jakarta Sans', sans-serif;
+    --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.05);
+    --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 1.2rem 2rem;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.logo i {
+    color: var(--primary);
+    font-size: 1.75rem;
+}
+
+.logo-accent {
+    color: var(--accent);
+}
+
+.nav-back-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+}
+
+.nav-back-link:hover {
+    color: var(--primary);
+    background-color: var(--primary-light);
+    border-color: var(--primary);
+}
+
+/* ==========================================================================
+   MAIN INVOICE CONTAINER
+   ========================================================================== */
+.bill-container {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    min-height: calc(100vh - 350px);
+}
+
+.bill-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Decor stripe on top of invoice */
+.bill-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+/* Bill Header */
+.bill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 1.5rem;
+}
+
+.invoice-branding h2 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+.invoice-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+}
+
+.invoice-logo {
+    font-size: 2.5rem;
+    color: var(--primary-light);
+}
+
+/* Product item summary section */
+.item-summary-section h3, .calculation-section h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.item-details-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    border: 1px solid var(--border-color);
+}
+
+.item-image-wrapper {
+    width: 90px;
+    height: 90px;
+    background-color: #ffffff;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.item-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 0.5rem;
+}
+
+.item-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.item-meta h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.brand-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.category-badge {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: var(--accent-light);
+    color: var(--accent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.25rem;
+}
+
+/* Calculation Breakdown Table */
+.calc-table {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.calc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.calc-label {
+    color: var(--text-muted);
+}
+
+.calc-value {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.text-discount {
+    color: var(--success);
+}
+.text-discount .calc-value {
+    color: var(--success);
+}
+
+.divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 0.5rem 0;
+}
+
+.double-divider {
+    height: 4px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    margin: 0.5rem 0;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+.font-semibold .calc-label {
+    color: var(--text-main);
+}
+
+.total-row {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+.total-row .calc-label {
+    color: var(--text-main);
+}
+.total-row .calc-value {
+    color: var(--primary);
+}
+
+/* Invoice Actions */
+.bill-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.btn-back {
+    flex: 1;
+    padding: 1.1rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.btn-back:hover {
+    background-color: #f1f5f9;
+    color: var(--text-main);
+    border-color: var(--text-muted);
+}
+
+.btn-checkout {
+    flex: 1.5;
+    padding: 1.1rem;
+    background: linear-gradient(135deg, var(--success), #059669);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.btn-checkout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.45);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   SUCCESS OVERLAY POPUP MODAL (Glassmorphic)
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: var(--transition);
+}
+
+.modal-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 3.5rem 2.5rem;
+    max-width: 480px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: modalBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.success-icon-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.success-circle {
+    width: 80px;
+    height: 80px;
+    background-color: var(--success-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--success);
+    font-size: 2.5rem;
+    border: 2px solid rgba(16, 185, 129, 0.2);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+    animation: pulseSuccess 2s infinite;
+}
+
+.modal-card h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.modal-highlight {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--success);
+    margin-bottom: 1rem;
+}
+
+.modal-subtext {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn-modal-dismiss {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.btn-modal-dismiss:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-modal-dismiss i {
+    transition: var(--transition);
+}
+
+.btn-modal-dismiss:hover i {
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 2.5rem 2rem;
+    margin-top: 6rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-brand .logo {
+    color: #ffffff;
+}
+
+.footer-brand .logo i {
+    color: var(--primary);
+}
+
+.footer-bottom-text {
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   KEYFRAME ANIMATIONS
+   ========================================================================== */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes modalBounce {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.0) translateY(0);
+    }
+}
+
+@keyframes pulseSuccess {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(16, 185, 129, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVENESS)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .bill-card {
+        padding: 2rem;
+        gap: 2rem;
+    }
+    .item-details-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    .item-meta {
+        align-items: center;
+    }
+    .category-badge {
+        align-self: center;
+    }
+    .bill-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
